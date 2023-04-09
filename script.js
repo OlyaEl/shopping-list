@@ -1,6 +1,25 @@
-/* Новые элементы должны добавляться в список по нажатию на Enter */
+const sendInput = document.querySelector('#input');
+const itemsContainer = document.querySelector('.items');
 
-/* Пустые элементы не должны добавляться */
+sendInput.addEventListener('keydown', function(event) {
+    const itemsText = sendInput.value;
+
+    const newItem = document.createElement('div');
+    newItem.classList.add('points');
+    newItem.textContent = itemsText;
+    newItem.addEventListener('click', function() {
+        newItem.classList.toggle('done');
+    })
+
+    if (itemsText != '') {
+
+        if (event.key == 'Enter') {
+            itemsContainer.append(newItem);
+            sendInput.value = '';
+        }
+    }
+});
+/* Новые элементы должны добавляться в список по нажатию на Enter */
 
 /* Если кликнуть на элемент списка, он зачеркивается */
 
